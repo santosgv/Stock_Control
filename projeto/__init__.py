@@ -11,5 +11,5 @@ class aplicacao():
     def Principal(self):
         self.main.title('Planilha')
         self.main.geometry('1024x1024')
-        self.main.resizable(False, False)
+        
 aplicacao()
