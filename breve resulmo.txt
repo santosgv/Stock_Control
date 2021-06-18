@@ -1,0 +1,10 @@
+Criar um app onde monta uma planilha de ações 
+
+Contendo
+Ação “nome”,
+valor da aquisicao,
+Quantidade ,
+Cotação atual,
+Volume “valor atualizar x quantidade”,
+Ganho "percentual ao valor de compra x valor atual",
+Por que comprei
