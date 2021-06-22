@@ -1,4 +1,5 @@
-from projeto import aplicacao
+from projeto.principal import Aplicacao
 
-aplicacao.run
+Aplicacao()
+Aplicacao.run
 
