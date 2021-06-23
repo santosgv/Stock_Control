@@ -1,13 +1,12 @@
-from .models import  BancoDados
+from .models import  Banco
 from .principal import *
 
 
-class FuncionalidadeS(BancoDados):
+class FuncionalidadeS(Banco):
     def __init__(self):
-        Aplicacao()
+        pass
     def adiciona(self):
-        banco=BancoDados()
-        banco.insert(self.entacao.get(),self.entvr.get(),self.entq.get(),'100,0',2,100,self.entpc.get())
+        Banco(self.entacao.get(),self.entvr.get(),self.entq.get(),100,100,100,self.entpc.get()).insert()
 
     def altera(self):
         self.update()
