@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from .fucoes import FuncionalidadeS
-from .models import BancoDados
+
 
 main = Tk()
 
@@ -57,9 +57,22 @@ class Aplicacao(FuncionalidadeS):
         Label(self.Main, text='Quantidade', bg='white').place(relx=0.33, rely=0.01)
         Label(self.Main, text='Por que Comprou', bg='white').place(relx=0.43, rely=0.01)
 
-        self.entacao = Entry(self.Main).place(relx=0.03, rely=0.30)
-        self.entvr = Entry(self.Main).place(relx=0.20, rely=0.30, relwidth=0.10)
-        self.entq = Entry(self.Main).place(relx=0.33, rely=0.30, relwidth=0.05)
-        self.entpc = Entry(self.Main).place(relx=0.43, rely=0.30, relwidth=0.30)
+        self.entacao = Entry(self.Main)
+        self.entacao.place(relx=0.03, rely=0.30)
+
+        self.entvr = Entry(self.Main)
+        self.entvr.place(relx=0.20, rely=0.30, relwidth=0.10)
+        self.entq = Entry(self.Main)
+        self.entq.place(relx=0.33, rely=0.30, relwidth=0.05)
+
+        self.entpc = Entry(self.Main)
+        self.entpc.place(relx=0.43, rely=0.30, relwidth=0.30)
         Button(self.Main, text='Adicionar', command=self.adiciona).place(relx=0.80, rely=0.30)
+
+    def getentry(self):
+        self.entacao.get()
+        self.entvr.get()
+        self.entq.get()
+        self.entpc.get()
+        print(self.entacao.get(),self.entvr.get(),self.entq.get(),self.entpc.get())
 
