@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from .fucoes import FuncionalidadeS
-
+from .models import Banco
 
 main = Tk()
 
@@ -68,11 +68,4 @@ class Aplicacao(FuncionalidadeS):
         self.entpc = Entry(self.Main)
         self.entpc.place(relx=0.43, rely=0.30, relwidth=0.30)
         Button(self.Main, text='Adicionar', command=self.adiciona).place(relx=0.80, rely=0.30)
-
-    def getentry(self):
-        self.entacao.get()
-        self.entvr.get()
-        self.entq.get()
-        self.entpc.get()
-        print(self.entacao.get(),self.entvr.get(),self.entq.get(),self.entpc.get())
 
