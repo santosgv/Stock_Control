@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from .fucoes import FuncionalidadeS
-from .models import Banco
+from .models import Banco, cursor
 
 main = Tk()
 
@@ -27,7 +27,8 @@ class Aplicacao(FuncionalidadeS):
         self.second.place(relx=0.01, rely=0.20, relwidth=0.98, relheight=0.75)
 
     def grid(self):
-        self.grid = ttk.Treeview(self.second, columns=('Acao', 'VC', 'Quantidade', 'VA', 'Volume', 'GANHO', 'PC'),show='headings', height=25)
+        self.grid = ttk.Treeview(self.second, columns=('Acao', 'VC', 'Quantidade', 'VA', 'Volume', 'GANHO', 'PC'),
+                                 show='headings', height=25)
         self.grid.place(relx=0.01, rely=0.01, relwidth=0.99, relheight=0.75)
         self.grid.column('#0', width=10, minwidth=10)
         self.grid.column('Acao', minwidth=100, width=102)
@@ -47,7 +48,14 @@ class Aplicacao(FuncionalidadeS):
         self.grid.heading('PC', text='Por Que Comprou')
         self.grid.pack()
 
-
+        def showgrid():
+            self.grid.delete(*self.grid.get_children())
+            dados = cursor.execute(f'''
+                    select ACAO,VLCOMPRA,QT,VLATUAL,VOLUME,GANHO,PQ from PLANILHA order by ACAO asc
+                    ''')
+            for i in dados:
+                self.grid.insert("", END, values=(i[0], i[1], i[2], i[3], i[4], i[5], i[6]))
+        showgrid()
 
     # self.grid.insert(parent='', index=0, iid=0, text='', values=('1','Vineet','Alpha','a','s','c','g'))
 
@@ -68,4 +76,4 @@ class Aplicacao(FuncionalidadeS):
         self.entpc = Entry(self.Main)
         self.entpc.place(relx=0.43, rely=0.30, relwidth=0.30)
         Button(self.Main, text='Adicionar', command=self.adiciona).place(relx=0.80, rely=0.30)
-
+        Button(self.Main,text='Atualizar',command=self.grid).place(relx=0.90, rely=0.30)
