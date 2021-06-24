@@ -33,7 +33,7 @@ class Banco():
 
     def show(self):
         dados=self.cursor.execute(f'''
-        select * from PLANILHA
+        select ACAO,VLCOMPRA,QT,VLATUAL,VOLUME,GANHO,PQ from PLANILHA order by ACAO asc
         ''')
         for i in dados.fetchall():
             return i
