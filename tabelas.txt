@@ -8,3 +8,27 @@ VOLUME INT NOT NULL,
 GANHO FLOAT,
 PQ VARCHAR(200),
 );
+
+
+----
+
+Um outro método muito eficiente, mas que exige um pouco de Transact-SQL, é usar uma Variável do tipo TABLE. Confira o seguinte exemplo:
+
+DECLARE @T TABLE (NUMBER INT)
+DECLARE @I INT, @LIMITE INT
+
+SET @I = 0
+SET @LIMITE = 25000
+WHILE @I < @LIMITE
+BEGIN
+    INSERT INTO @T (NUMBER) VALUES (@I)
+    SET @I = @I + 1
+END
+
+Este código leva menos de 1 segundo para executar e cria uma tabela na memória com números de 0 a 24.999. Usando ainda o exemplo de geração de datas, podemos inserir 25 mil linhas de uma só vez, como mostra o novo exemplo abaixo:
+
+
+DECLARE @DATAINICIO DATETIME
+SET @DATAINICIO = '2001-01-01'
+SELECT DATA, DATEPART(DW, DATA)
+FROM (SELECT @DATAINICIO + NUMBER DATA FROM @T) T
