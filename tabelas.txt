@@ -32,3 +32,6 @@ DECLARE @DATAINICIO DATETIME
 SET @DATAINICIO = '2001-01-01'
 SELECT DATA, DATEPART(DW, DATA)
 FROM (SELECT @DATAINICIO + NUMBER DATA FROM @T) T
+
+// overflow de loop
+https://pt.stackoverflow.com/questions/161416/como-fazer-for-loop-em-sql-server
